@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdullah Elsherif — Full-Stack Developer</title>
+<meta name="description" content="Abdullah Elsherif — self-taught full-stack developer from Egypt. Builder of Global Math, a complete e-learning platform.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+:root{
+  --bg:#0b1020; --bg2:#101830; --card:#141d38; --line:#223055;
+  --txt:#e8ecf7; --dim:#9aa7c7; --accent:#4f8cff; --accent2:#7ee0c3;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--txt);
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Kufi Arabic",sans-serif;
+  line-height:1.7;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+  background:rgba(11,16,32,.8);border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:700;font-size:1.05rem;letter-spacing:.3px}
+.brand span{color:var(--accent)}
+nav .links{display:flex;gap:18px;align-items:center}
+nav a{color:var(--dim);text-decoration:none;font-size:.92rem;transition:color .2s}
+nav a:hover{color:var(--txt)}
+#langBtn{
+  background:var(--card);color:var(--txt);border:1px solid var(--line);
+  padding:6px 14px;border-radius:999px;cursor:pointer;font-size:.85rem;font-family:inherit;
+  transition:border-color .2s;
+}
+#langBtn:hover{border-color:var(--accent)}
+header.hero{padding:96px 0 72px;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 0%,#182446 0%,var(--bg) 70%)}
+.hero .kicker{color:var(--accent2);font-size:.95rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.15;margin-bottom:16px}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{color:var(--dim);max-width:640px;margin:0 auto 30px;font-size:1.08rem}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;
+  transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#3a6fe0);color:#fff;box-shadow:0 6px 22px rgba(79,140,255,.35)}
+.btn.ghost{border:1px solid var(--line);color:var(--txt);background:var(--card)}
+section{padding:64px 0}
+h2.sec{font-size:1.7rem;margin-bottom:8px}
+.sec-sub{color:var(--dim);margin-bottom:34px}
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.about p{color:var(--dim);margin-bottom:14px}
+.about p b{color:var(--txt)}
+.facts{display:flex;flex-direction:column;gap:12px}
+.fact{display:flex;gap:10px;align-items:baseline;font-size:.95rem}
+.fact .k{color:var(--accent2);min-width:110px;font-weight:600}
+.fact .v{color:var(--dim)}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  background:var(--bg2);border:1px solid var(--line);color:var(--txt);
+  padding:8px 16px;border-radius:999px;font-size:.88rem;transition:border-color .2s,transform .15s;
+}
+.chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .15s,border-color .2s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+.proj.featured{grid-column:1/-1;background:linear-gradient(135deg,#16224a,#101a36)}
+.proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.proj h3{font-size:1.2rem}
+.tag{font-size:.72rem;padding:4px 10px;border-radius:999px;background:rgba(126,224,195,.12);color:var(--accent2);border:1px solid rgba(126,224,195,.3);white-space:nowrap}
+.proj p{color:var(--dim);font-size:.95rem;flex:1}
+.proj .stack{display:flex;flex-wrap:wrap;gap:8px}
+.proj .stack span{font-size:.75rem;color:var(--dim);background:var(--bg2);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.proj a.plink{color:var(--accent);text-decoration:none;font-size:.9rem;font-weight:600}
+.proj a.plink:hover{text-decoration:underline}
+.contact{text-align:center}
+.contact .cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.contact a.c{
+  display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 22px;color:var(--txt);text-decoration:none;font-size:.95rem;
+  transition:transform .15s,border-color .2s;
+}
+.contact a.c:hover{transform:translateY(-3px);border-color:var(--accent)}
+.contact a.c .ico{font-size:1.2rem}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--dim);font-size:.85rem}
+[dir="rtl"] body{font-family:"Noto Kufi Arabic","Segoe UI",system-ui,sans-serif}
+[dir="rtl"] .hero .kicker{letter-spacing:0}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <div class="brand">Abdullah<span>.</span>Elsherif</div>
+    <div class="links">
+      <a href="#about" data-en="About" data-ar="عنّي">About</a>
+      <a href="#projects" data-en="Projects" data-ar="مشاريعي">Projects</a>
+      <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+      <button id="langBtn" onclick="toggleLang()">عربي</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" data-en="Self-taught full-stack developer" data-ar="مطوّر فول ستاك — علّمت نفسي بنفسي">Self-taught full-stack developer</div>
+    <h1 data-en="I build complete web products, <span class='grad'>from database to deployment.</span>" data-ar="ببني منتجات ويب كاملة، <span class='grad'>من قاعدة البيانات للنشر.</span>">I build complete web products, <span class="grad">from database to deployment.</span></h1>
+    <p class="sub" data-en="I'm Abdullah, a developer from Tanta, Egypt. Five years of teaching myself by shipping real products — the biggest is Global Math, an e-learning platform I built from scratch, sold, and still develop." data-ar="أنا عبدالله، مطوّر من طنطا، مصر. خمس سنين بتعلّم لوحدي عن طريق بناء منتجات حقيقية — أكبرها Global Math، منصة تعليمية بنيتها من الصفر، اتباعت، ولسه بطوّر فيها.">I'm Abdullah, a developer from Tanta, Egypt. Five years of teaching myself by shipping real products — the biggest is Global Math, an e-learning platform I built from scratch, sold, and still develop.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects" data-en="See my work" data-ar="شوف شغلي">See my work</a>
+      <a class="btn ghost" href="#contact" data-en="Get in touch" data-ar="كلّمني">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec" data-en="About me" data-ar="عنّي">About me</h2>
+    <p class="sec-sub" data-en="The short version" data-ar="باختصار">The short version</p>
+    <div class="about-grid">
+      <div class="card about">
+        <p data-en="I didn't learn programming in a classroom. I learned it by building things people actually use — and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself." data-ar="أنا متعلمتش البرمجة في فصل. اتعلمتها ببناء حاجات ناس بتستخدمها فعلًا — و<b>Global Math</b> هو الدليل: منصة تعليمية كاملة فيها كورسات فيديو، وواترمارك لكل طالب، وتسجيل دخول بجوجل، وثلاث صلاحيات للمستخدمين، شغالة لايف على بنية مجانية صممتها بنفسي.">I didn't learn programming in a classroom. I learned it by building things people actually use — and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself.</p>
+        <p data-en="I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem." data-ar="بتعامل مع كل المراحل: تصميم قاعدة البيانات، كتابة الـ API، بناء الواجهة، والنشر. بيهمني الشغل الصادق، والكود النضيف، ومنتجات بتحل مشكلة حقيقية.">I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem.</p>
+        <p data-en="Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work." data-ar="دلوقتي بدور على <b>شغل ريموت جونيور أو تدريب</b> أقدر فيه أكمّل اتعلّم وأسلّم شغل حقيقي.">Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work.</p>
+      </div>
+      <div class="card facts">
+        <div class="fact"><span class="k" data-en="Location" data-ar="المكان">Location</span><span class="v" data-en="Tanta, Egypt" data-ar="طنطا، مصر">Tanta, Egypt</span></div>
+        <div class="fact"><span class="k" data-en="Experience" data-ar="الخبرة">Experience</span><span class="v" data-en="~5 years self-taught, shipping real projects" data-ar="حوالي 5 سنين تعلّم ذاتي وبناء مشاريع حقيقية">~5 years self-taught, shipping real projects</span></div>
+        <div class="fact"><span class="k" data-en="Focus" data-ar="التركيز">Focus</span><span class="v" data-en="Full-stack web (Node.js / Next.js)" data-ar="فول ستاك ويب (Node.js / Next.js)">Full-stack web (Node.js / Next.js)</span></div>
+        <div class="fact"><span class="k" data-en="Open to" data-ar="متاح لـ">Open to</span><span class="v" data-en="Remote junior roles, internships, freelance" data-ar="شغل ريموت جونيور، تدريب، فريلانس">Remote junior roles, internships, freelance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="What I work with" data-ar="التقنيات اللى بشتغل بيها">What I work with</h2>
+    <p class="sec-sub" data-en="Tools I use in real projects, not just tutorials" data-ar="أدوات بستخدمها في مشاريع حقيقية، مش بس في كورسات">Tools I use in real projects, not just tutorials</p>
+    <div class="skills">
+      <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">NestJS</span>
+      <span class="chip">Next.js / React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+      <span class="chip">Python</span><span class="chip">PostgreSQL / Prisma</span><span class="chip">MySQL</span>
+      <span class="chip">MongoDB</span><span class="chip">Docker (basics)</span><span class="chip">Cloudflare R2</span>
+      <span class="chip">Vercel / Render</span><span class="chip">GitHub Actions</span><span class="chip">REST APIs</span>
+      <span class="chip">Git</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="Projects" data-ar="مشاريعي">Projects</h2>
+    <p class="sec-sub" data-en="Things I designed, built and shipped" data-ar="حاجات صممتها وبنيتها ونشرتها">Things I designed, built and shipped</p>
+    <div class="proj-grid">
+      <div class="proj featured">
+        <div class="top">
+          <h3>Global Math</h3>
+          <span class="tag" data-en="Live · sold to a client · still maintained by me" data-ar="شغالة · اتباعت لعميل · ولسه بطوّرها">Live · sold to a client · still maintained by me</span>
+        </div>
+        <p data-en="A complete math e-learning platform I built from zero: video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), a support chat, lesson tracking, and a video-transcoding pipeline. Runs on a free-tier architecture (Vercel + Render + Neon Postgres + Cloudflare R2) that I planned and tuned myself." data-ar="منصة تعليم رياضيات كاملة بنيتها من الصفر: كورسات فيديو بواترمارك متحرك لكل طالب، تسجيل دخول بجوجل، ثلاث صلاحيات (طالب، مدرّس، أدمن)، شات دعم، متابعة للدروس، وخط معالجة فيديو. شغالة على بنية مجانية (Vercel + Render + Neon Postgres + Cloudflare R2) خططتها وظبطتها بنفسي.">A complete math e-learning platform I built from zero: video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), a support chat, lesson tracking, and a video-transcoding pipeline. Runs on a free-tier architecture (Vercel + Render + Neon Postgres + Cloudflare R2) that I planned and tuned myself.</p>
+        <div class="stack"><span>Next.js</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Cloudflare R2</span><span>GitHub Actions</span></div>
+        <a class="plink" href="https://www.globalmathematics.online/" target="_blank" rel="noopener" data-en="Visit globalmathematics.online →" data-ar="زوروا globalmathematics.online ←">Visit globalmathematics.online →</a>
+      </div>
+      <div class="proj">
+        <div class="top"><h3 data-en="Image Processing API" data-ar="API معالجة الصور">Image Processing API</h3></div>
+        <p data-en="A REST API that resizes and processes images on the fly, built with Express, TypeScript and Sharp, with tests and clean architecture." data-ar="واجهة REST بتظبط وتعالج الصور لحظيًا، مبنية بـ Express وTypeScript وSharp، مع اختبارات وبنية كود نضيفة.">A REST API that resizes and processes images on the fly, built with Express, TypeScript and Sharp, with tests and clean architecture.</p>
+        <div class="stack"><span>Express</span><span>TypeScript</span><span>Sharp</span></div>
+        <a class="plink" href="https://github.com/3bdullahelsherif/image-processing-api" target="_blank" rel="noopener" data-en="View on GitHub →" data-ar="شوفها على جيت هاب ←">View on GitHub →</a>
+      </div>
+      <div class="proj">
+        <div class="top"><h3 data-en="Voice Trainer" data-ar="مدرّب الصوت">Voice Trainer</h3></div>
+        <p data-en="An Arabic voice-and-breathing training PWA with a daily 10-minute routine, offline support and install-on-phone." data-ar="تطبيق ويب تقدّمي (PWA) عربي لتدريب الصوت والتنفس بروتين يومي 10 دقايق، يشتغل أوفلاين ويتثبت على الموبايل.">An Arabic voice-and-breathing training PWA with a daily 10-minute routine, offline support and install-on-phone.</p>
+        <div class="stack"><span>JavaScript</span><span>PWA</span><span>HTML/CSS</span></div>
+        <a class="plink" href="https://github.com/3bdullahelsherif/voice-trainer" target="_blank" rel="noopener" data-en="View on GitHub →" data-ar="شوفها على جيت هاب ←">View on GitHub →</a>
+      </div>
+      <div class="proj">
+        <div class="top"><h3>TheraTalk</h3></div>
+        <p data-en="A mental-health information website with a simple supportive chatbot, built with Python (Flask)." data-ar="موقع معلومات عن الصحة النفسية مع شات بوت بسيط للدعم، مبني بـ Python (Flask).">A mental-health information website with a simple supportive chatbot, built with Python (Flask).</p>
+        <div class="stack"><span>Python</span><span>Flask</span><span>HTML/CSS</span></div>
+        <a class="plink" href="https://github.com/3bdullahelsherif/theratalk" target="_blank" rel="noopener" data-en="View on GitHub →" data-ar="شوفها على جيت هاب ←">View on GitHub →</a>
+      </div>
+      <div class="proj">
+        <div class="top"><h3>Math Lab</h3></div>
+        <p data-en="A clean blue calculator in plain HTML, CSS and JavaScript — live on GitHub Pages." data-ar="آلة حاسبة زرقاء شكلها لطيف بـ HTML وCSS وJavaScript بس — شغالة على GitHub Pages.">A clean blue calculator in plain HTML, CSS and JavaScript — live on GitHub Pages.</p>
+        <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <a class="plink" href="https://github.com/3bdullahelsherif/math-lab" target="_blank" rel="noopener" data-en="View on GitHub →" data-ar="شوفها على جيت هاب ←">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap contact">
+    <h2 class="sec" data-en="Let's talk" data-ar="خلينا نتكلم">Let's talk</h2>
+    <p class="sec-sub" data-en="Remote junior roles, internships, or a project you need built" data-ar="شغل ريموت جونيور، تدريب، أو مشروع محتاج حد يبنيه">Remote junior roles, internships, or a project you need built</p>
+    <div class="cards">
+      <a class="c" href="mailto:3bdullahelsherif@gmail.com"><span class="ico">✉️</span><span>3bdullahelsherif@gmail.com</span></a>
+      <a class="c" href="https://github.com/3bdullahelsherif" target="_blank" rel="noopener"><span class="ico">🐙</span><span>github.com/3bdullahelsherif</span></a>
+      <a class="c" href="https://www.linkedin.com/in/abdullah-elsherif-1009a6324" target="_blank" rel="noopener"><span class="ico">💼</span><span>LinkedIn</span></a>
+      <a class="c" href="https://x.com/3bdullahaly" target="_blank" rel="noopener"><span class="ico">𝕏</span><span>@3bdullahaly</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" data-en="Built by Abdullah Elsherif — no templates, just code." data-ar="اتبنى بواسطة عبدالله الشريف — من غير قوالب، كود وبس.">Built by Abdullah Elsherif — no templates, just code.</div>
+</footer>
+
+<script>
+var lang = localStorage.getItem('lang') || 'en';
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+  document.getElementById('langBtn').textContent = (lang === 'ar') ? 'EN' : 'عربي';
+  document.title = (lang === 'ar')
+    ? 'عبدالله الشريف — مطوّر فول ستاك'
+    : 'Abdullah Elsherif — Full-Stack Developer';
+}
+function toggleLang(){
+  lang = (lang === 'ar') ? 'en' : 'ar';
+  localStorage.setItem('lang', lang);
+  applyLang();
+}
+applyLang();
+</script>
+</body>
+</html>
