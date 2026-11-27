@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,7 +162,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
       <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
       <div class="navbtns">
         <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Theme">☾</button>
-        <button class="iconbtn" id="langBtn" onclick="toggleLang()">عربي</button>
+        <button class="iconbtn" id="langBtn" onclick="toggleLang()">AR</button>
         <a class="iconbtn cvbtn" href="abdullah-elsherif-cv.pdf" download data-en="Download CV" data-ar="حمّل السيرة">Download CV</a>
       </div>
     </div>
@@ -396,7 +396,7 @@ abdullah.<span class="tk-f">ship</span>(); <span class="tk-c">// always</span></
 </footer>
 
 <script>
-var lang = localStorage.getItem('lang') || 'ar';
+var lang = localStorage.getItem('lang') || 'en';
 var theme = localStorage.getItem('theme') || 'dark';
 function applyTheme(){
   document.documentElement.setAttribute('data-theme', theme);
@@ -416,7 +416,7 @@ function applyLang(){
   document.querySelectorAll('[data-en-placeholder]').forEach(function(el){
     el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
   });
-  document.getElementById('langBtn').textContent = (lang === 'ar') ? 'EN' : 'عربي';
+  document.getElementById('langBtn').textContent = (lang === 'ar') ? 'EN' : 'AR';
   document.title = (lang === 'ar')
     ? 'عبدالله الشريف | مطوّر فول ستاك'
     : 'Abdullah Elsherif | Full-Stack Developer';
