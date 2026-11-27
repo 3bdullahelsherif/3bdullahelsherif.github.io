@@ -1,97 +1,150 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark light">
 <title>Abdullah Elsherif | Full-Stack Developer</title>
-<meta name="description" content="Abdullah Elsherif, self-taught full-stack developer from Egypt. Builder of Global Math, a complete e-learning platform.">
+<meta name="description" content="Abdullah Elsherif, self-taught full-stack developer from Egypt. Built and sold Global Math, a live e-learning platform. Five Arabic browser extensions coming soon.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <style>
 :root{
-  --bg:#0b1020; --bg2:#101830; --card:#141d38; --line:#223055;
-  --txt:#e8ecf7; --dim:#9aa7c7; --accent:#4f8cff; --accent2:#7ee0c3;
-  --radius:16px;
+  --bg:#0b1020; --bg2:#101830; --card:#141d38; --card2:#182242; --line:#223055;
+  --txt:#e8ecf7; --dim:#9aa7c7; --accent:#4f8cff; --accent2:#7ee0c3; --warn:#f7b955;
+  --radius:16px; --shadow:0 6px 22px rgba(79,140,255,.35);
+}
+[data-theme="light"]{
+  --bg:#f5f7fc; --bg2:#eef1f9; --card:#ffffff; --card2:#f2f5fc; --line:#d9e0f0;
+  --txt:#16213c; --dim:#54617f; --accent:#2563eb; --accent2:#0d9488; --warn:#b45309;
+  --shadow:0 6px 22px rgba(37,99,235,.18);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--bg); color:var(--txt);
   font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Kufi Arabic",sans-serif;
-  line-height:1.7;
+  line-height:1.7; transition:background .25s,color .25s;
 }
-.wrap{max-width:960px;margin:0 auto;padding:0 22px}
-nav{
-  position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
-  background:rgba(11,16,32,.8);border-bottom:1px solid var(--line);
-}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{font-weight:700;font-size:1.05rem;letter-spacing:.3px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:10px}
+.brand{font-weight:700;font-size:1.05rem;letter-spacing:.3px;white-space:nowrap}
 .brand span{color:var(--accent)}
-nav .links{display:flex;gap:18px;align-items:center}
-nav a{color:var(--dim);text-decoration:none;font-size:.92rem;transition:color .2s}
+nav .links{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:var(--dim);text-decoration:none;font-size:.9rem;transition:color .2s}
 nav a:hover{color:var(--txt)}
-#langBtn{
-  background:var(--card);color:var(--txt);border:1px solid var(--line);
-  padding:6px 14px;border-radius:999px;cursor:pointer;font-size:.85rem;font-family:inherit;
-  transition:border-color .2s;
-}
-#langBtn:hover{border-color:var(--accent)}
-header.hero{padding:96px 0 72px;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 0%,#182446 0%,var(--bg) 70%)}
-.hero .kicker{color:var(--accent2);font-size:.95rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.15;margin-bottom:16px}
+.navbtns{display:flex;gap:8px;align-items:center}
+.iconbtn{background:var(--card);color:var(--txt);border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.85rem;font-family:inherit;transition:border-color .2s;text-decoration:none;display:inline-block}
+.iconbtn:hover{border-color:var(--accent)}
+.cvbtn{background:linear-gradient(90deg,var(--accent),#3a6fe0);color:#fff!important;border:0;font-weight:600;white-space:nowrap}
+@media(max-width:860px){nav .links > a:not(.cvbtn){display:none}nav .links{gap:8px}}
+@media(max-width:480px){nav .links{gap:6px}.navbtns{gap:6px}.iconbtn{padding:6px 10px}}
+@media(max-width:380px){nav .wrap{padding:0 12px}.brand{font-size:.92rem;letter-spacing:0}nav .links{gap:6px}.navbtns{gap:6px}.iconbtn{padding:6px 10px}.cvbtn{font-size:0}.cvbtn::after{content:"CV";font-size:.85rem}}
+header.hero{padding:72px 0 56px;background:radial-gradient(ellipse 70% 60% at 50% 0%,color-mix(in srgb,var(--accent) 14%,var(--bg)) 0%,var(--bg) 70%)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero .kicker{color:var(--accent2);font-size:.92rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:clamp(2rem,5.4vw,3rem);line-height:1.18;margin-bottom:14px}
 .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.sub{color:var(--dim);max-width:640px;margin:0 auto 30px;font-size:1.08rem}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{
-  display:inline-block;padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;
-  transition:transform .15s,box-shadow .15s;
-}
+.hero p.sub{color:var(--dim);max-width:600px;margin-bottom:26px;font-size:1.05rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.93rem;transition:transform .15s,box-shadow .15s;border:0;cursor:pointer;font-family:inherit}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:linear-gradient(90deg,var(--accent),#3a6fe0);color:#fff;box-shadow:0 6px 22px rgba(79,140,255,.35)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#3a6fe0);color:#fff;box-shadow:var(--shadow)}
 .btn.ghost{border:1px solid var(--line);color:var(--txt);background:var(--card)}
-section{padding:64px 0}
-h2.sec{font-size:1.7rem;margin-bottom:8px}
-.sec-sub{color:var(--dim);margin-bottom:34px}
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
-@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+.codecard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+.codecard .bar{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.codecard .bar i{width:11px;height:11px;border-radius:50%;display:block}
+.codecard .bar i:nth-child(1){background:#ff5f57}.codecard .bar i:nth-child(2){background:#febc2e}.codecard .bar i:nth-child(3){background:#28c840}
+.codecard pre{padding:20px 22px;font-family:"Cascadia Code","SF Mono",Consolas,monospace;font-size:.86rem;line-height:1.85;overflow-x:auto;direction:ltr;text-align:left}
+.tk-k{color:var(--accent)}.tk-s{color:var(--accent2)}.tk-c{color:var(--dim);font-style:italic}.tk-f{color:var(--warn)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px;text-align:center}
+.stat b{display:block;font-size:1.5rem;color:var(--accent);direction:ltr;unicode-bidi:isolate}
+[data-theme="light"] .stat b{color:var(--accent)}
+.stat span{font-size:.82rem;color:var(--dim)}
+section{padding:56px 0}
+h2.sec{font-size:1.65rem;margin-bottom:6px}
+.sec-sub{color:var(--dim);margin-bottom:30px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.case{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start;background:linear-gradient(135deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-bottom:26px}
+@media(max-width:860px){.case{grid-template-columns:1fr}}
+.case .shot{border-radius:12px;border:1px solid var(--line);width:100%;display:block}
+.case h3{font-size:1.35rem;margin-bottom:4px}
+.case .role-line{color:var(--accent2);font-size:.88rem;margin-bottom:14px}
+.case p{color:var(--dim);font-size:.95rem;margin-bottom:12px}
+.case h4{font-size:.95rem;margin:16px 0 8px;color:var(--txt)}
+.case ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.case ul li{color:var(--dim);font-size:.92rem;padding-inline-start:20px;position:relative}
+.case ul li::before{content:"▸";color:var(--accent);position:absolute;inset-inline-start:0}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stack span{font-size:.75rem;color:var(--dim);background:var(--bg2);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,border-color .2s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+.proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.proj h3{font-size:1.12rem}
+.tag{font-size:.72rem;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--accent2) 12%,transparent);color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 30%,transparent);white-space:nowrap}
+.tag.soon{background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.proj p{color:var(--dim);font-size:.93rem;flex:1}
+.proj a.plink{color:var(--accent);text-decoration:none;font-size:.9rem;font-weight:600}
+.proj a.plink:hover{text-decoration:underline}
+.ext-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.ext{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform .15s,border-color .2s}
+.ext:hover{transform:translateY(-3px);border-color:var(--accent)}
+.ext .ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:var(--bg2);border:1px solid var(--line)}
+.ext h3{font-size:1.05rem;margin-bottom:2px}
+.ext p{color:var(--dim);font-size:.88rem}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:10px}
+.svc h3{font-size:1.05rem}
+.svc p{color:var(--dim);font-size:.88rem;flex:1}
+.svc .price{font-size:1.25rem;font-weight:700;color:var(--accent)}
+.svc .price small{display:block;font-size:.75rem;color:var(--dim);font-weight:400}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.step b{color:var(--accent);font-size:1.3rem;display:block;margin-bottom:6px}
+.step h3{font-size:1rem;margin-bottom:6px}
+.step p{color:var(--dim);font-size:.87rem}
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+details.note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:0;overflow:hidden}
+details.note summary{cursor:pointer;padding:20px 22px;font-weight:600;font-size:1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.note summary::-webkit-details-marker{display:none}
+details.note summary::after{content:"+";color:var(--accent);font-size:1.3rem;flex-shrink:0}
+details.note[open] summary::after{content:"–"}
+details.note .body{padding:0 22px 20px;color:var(--dim);font-size:.9rem}
+details.note .body p{margin-bottom:10px}
+.note .meta{font-size:.75rem;color:var(--accent2);margin-top:4px;display:block;font-weight:400}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+form.cform{display:flex;flex-direction:column;gap:12px}
+form.cform input,form.cform textarea{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--txt);font-family:inherit;font-size:.93rem;width:100%}
+form.cform input:focus,form.cform textarea:focus{outline:none;border-color:var(--accent)}
+form.cform textarea{min-height:120px;resize:vertical}
+.contact .cards{display:flex;flex-direction:column;gap:12px}
+.contact a.c{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;color:var(--txt);text-decoration:none;font-size:.92rem;transition:transform .15s,border-color .2s;word-break:break-all}
+.contact a.c:hover{transform:translateY(-2px);border-color:var(--accent)}
+.contact a.c .ico{font-size:1.15rem;flex-shrink:0}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--dim);font-size:.85rem}
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:26px;align-items:start}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
 .about p{color:var(--dim);margin-bottom:14px}
 .about p b{color:var(--txt)}
 .facts{display:flex;flex-direction:column;gap:12px}
-.fact{display:flex;gap:10px;align-items:baseline;font-size:.95rem}
-.fact .k{color:var(--accent2);min-width:110px;font-weight:600}
+.fact{display:flex;gap:10px;align-items:baseline;font-size:.93rem}
+.fact .k{color:var(--accent2);min-width:105px;font-weight:600;flex-shrink:0}
 .fact .v{color:var(--dim)}
-.skills{display:flex;flex-wrap:wrap;gap:10px}
-.chip{
-  background:var(--bg2);border:1px solid var(--line);color:var(--txt);
-  padding:8px 16px;border-radius:999px;font-size:.88rem;transition:border-color .2s,transform .15s;
-}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--txt);padding:7px 15px;border-radius:999px;font-size:.86rem;transition:border-color .2s,transform .15s}
 .chip:hover{border-color:var(--accent);transform:translateY(-2px)}
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
-.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .15s,border-color .2s}
-.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
-.proj.featured{grid-column:1/-1;background:linear-gradient(135deg,#16224a,#101a36)}
-.proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.proj h3{font-size:1.2rem}
-.tag{font-size:.72rem;padding:4px 10px;border-radius:999px;background:rgba(126,224,195,.12);color:var(--accent2);border:1px solid rgba(126,224,195,.3);white-space:nowrap}
-.proj p{color:var(--dim);font-size:.95rem;flex:1}
-.proj .stack{display:flex;flex-wrap:wrap;gap:8px}
-.proj .stack span{font-size:.75rem;color:var(--dim);background:var(--bg2);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
-.proj a.plink{color:var(--accent);text-decoration:none;font-size:.9rem;font-weight:600}
-.proj a.plink:hover{text-decoration:underline}
-.contact{text-align:center}
-.contact .cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.contact a.c{
-  display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
-  border-radius:var(--radius);padding:16px 22px;color:var(--txt);text-decoration:none;font-size:.95rem;
-  transition:transform .15s,border-color .2s;
-}
-.contact a.c:hover{transform:translateY(-3px);border-color:var(--accent)}
-.contact a.c .ico{font-size:1.2rem}
-footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--dim);font-size:.85rem}
 [dir="rtl"] body{font-family:"Noto Kufi Arabic","Segoe UI",system-ui,sans-serif}
 [dir="rtl"] .hero .kicker{letter-spacing:0}
+[dir="rtl"] .codecard pre{direction:ltr;text-align:left}
+@media(max-width:480px){.codecard pre{font-size:.74rem;padding:16px 14px;white-space:pre-wrap;overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
@@ -99,75 +152,79 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   <div class="wrap">
     <div class="brand">Abdullah<span>.</span>Elsherif</div>
     <div class="links">
+      <a href="#work" data-en="Work" data-ar="شغلي">Work</a>
+      <a href="#extensions" data-en="Extensions" data-ar="الإضافات">Extensions</a>
+      <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
+      <a href="#notes" data-en="Notes" data-ar="ملاحظات">Notes</a>
       <a href="#about" data-en="About" data-ar="عنّي">About</a>
-      <a href="#projects" data-en="Projects" data-ar="مشاريعي">Projects</a>
       <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
-      <button id="langBtn" onclick="toggleLang()">عربي</button>
+      <div class="navbtns">
+        <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Theme">☾</button>
+        <button class="iconbtn" id="langBtn" onclick="toggleLang()">عربي</button>
+        <a class="iconbtn cvbtn" href="abdullah-elsherif-cv.pdf" download data-en="Download CV" data-ar="حمّل السيرة">Download CV</a>
+      </div>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="kicker" data-en="Self-taught full-stack developer" data-ar="مطوّر فول ستاك، علّمت نفسي بنفسي">Self-taught full-stack developer</div>
-    <h1 data-en="I build complete web products, <span class='grad'>from database to deployment.</span>" data-ar="ببني منتجات ويب كاملة، <span class='grad'>من قاعدة البيانات للنشر.</span>">I build complete web products, <span class="grad">from database to deployment.</span></h1>
-    <p class="sub" data-en="I'm Abdullah, a developer from Tanta, Egypt. Five years of teaching myself by shipping real products. The biggest is Global Math, an e-learning platform I built from scratch, sold, and still develop." data-ar="أنا عبدالله، مطوّر من طنطا، مصر. خمس سنين بتعلّم لوحدي عن طريق بناء منتجات حقيقية، أكبرها Global Math، منصة تعليمية بنيتها من الصفر، اتباعت، ولسه بطوّر فيها.">I'm Abdullah, a developer from Tanta, Egypt. Five years of teaching myself by shipping real products. The biggest is Global Math, an e-learning platform I built from scratch, sold, and still develop.</p>
-    <div class="cta">
-      <a class="btn primary" href="#projects" data-en="See my work" data-ar="شوف شغلي">See my work</a>
-      <a class="btn ghost" href="#contact" data-en="Get in touch" data-ar="كلّمني">Get in touch</a>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker" data-en="Self-taught full-stack developer · Tanta, Egypt" data-ar="مطوّر فول ستاك، علّمت نفسي بنفسي · طنطا، مصر">Self-taught full-stack developer · Tanta, Egypt</div>
+        <h1 data-en="I build complete web products, <span class='grad'>from database to deployment.</span>" data-ar="ببني منتجات ويب كاملة، <span class='grad'>من قاعدة البيانات للنشر.</span>">I build complete web products, <span class="grad">from database to deployment.</span></h1>
+        <p class="sub" data-en="Five years of teaching myself by shipping real products. The biggest is Global Math: an e-learning platform I built from scratch, sold to a client, and still develop today." data-ar="خمس سنين بتعلّم لوحدي عن طريق بناء منتجات حقيقية. أكبرها Global Math: منصة تعليمية بنيتها من الصفر، اتباعت لعميل، ولسه بطوّرها لحد النهارده.">Five years of teaching myself by shipping real products. The biggest is Global Math: an e-learning platform I built from scratch, sold to a client, and still develop today.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work" data-en="See my work" data-ar="شوف شغلي">See my work</a>
+          <a class="btn ghost" href="#contact" data-en="Get in touch" data-ar="كلّمني">Get in touch</a>
+        </div>
+      </div>
+      <div class="codecard" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="tk-c">// abdullah.ts</span>
+<span class="tk-k">const</span> abdullah = {
+  role: <span class="tk-s">"Full-Stack Developer"</span>,
+  stack: [<span class="tk-s">"Node.js"</span>, <span class="tk-s">"Next.js"</span>, <span class="tk-s">"TypeScript"</span>],
+  sold: [<span class="tk-s">"globalmathematics.online"</span>],
+  building: [<span class="tk-s">"5 Arabic browser extensions"</span>],
+  openTo: [<span class="tk-s">"remote junior roles"</span>, <span class="tk-s">"freelance"</span>],
+  ship: <span class="tk-k">true</span>,
+};
+abdullah.<span class="tk-f">ship</span>(); <span class="tk-c">// always</span></pre>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5+</b><span data-en="years learning by shipping" data-ar="سنين تعلّم ببناء منتجات">years learning by shipping</span></div>
+      <div class="stat"><b>1</b><span data-en="platform built, sold &amp; live" data-ar="منصة مبنية ومتباعة وشغالة">platform built, sold &amp; live</span></div>
+      <div class="stat"><b>5</b><span data-en="browser extensions built" data-ar="إضافات متصفح مبنية">browser extensions built</span></div>
+      <div class="stat"><b>32/32</b><span data-en="automated tests passing" data-ar="اختبار آلي ناجح">automated tests passing</span></div>
     </div>
   </div>
 </header>
-
-<section id="about">
+<section id="work">
   <div class="wrap">
-    <h2 class="sec" data-en="About me" data-ar="عنّي">About me</h2>
-    <p class="sec-sub" data-en="The short version" data-ar="باختصار">The short version</p>
-    <div class="about-grid">
-      <div class="card about">
-        <p data-en="I didn't learn programming in a classroom. I learned it by building things people actually use, and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself." data-ar="أنا متعلمتش البرمجة في فصل. اتعلمتها ببناء حاجات ناس بتستخدمها فعلًا، و<b>Global Math</b> هو الدليل: منصة تعليمية كاملة فيها كورسات فيديو، وواترمارك لكل طالب، وتسجيل دخول بجوجل، وثلاث صلاحيات للمستخدمين، شغالة لايف على بنية مجانية صممتها بنفسي.">I didn't learn programming in a classroom. I learned it by building things people actually use, and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself.</p>
-        <p data-en="I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem." data-ar="بتعامل مع كل المراحل: تصميم قاعدة البيانات، كتابة الـ API، بناء الواجهة، والنشر. بيهمني الشغل الصادق، والكود النضيف، ومنتجات بتحل مشكلة حقيقية.">I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem.</p>
-        <p data-en="Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work." data-ar="دلوقتي بدور على <b>شغل ريموت جونيور أو تدريب</b> أقدر فيه أكمّل اتعلّم وأسلّم شغل حقيقي.">Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work.</p>
-      </div>
-      <div class="card facts">
-        <div class="fact"><span class="k" data-en="Location" data-ar="المكان">Location</span><span class="v" data-en="Tanta, Egypt" data-ar="طنطا، مصر">Tanta, Egypt</span></div>
-        <div class="fact"><span class="k" data-en="Experience" data-ar="الخبرة">Experience</span><span class="v" data-en="~5 years self-taught, shipping real projects" data-ar="حوالي 5 سنين تعلّم ذاتي وبناء مشاريع حقيقية">~5 years self-taught, shipping real projects</span></div>
-        <div class="fact"><span class="k" data-en="Focus" data-ar="التركيز">Focus</span><span class="v" data-en="Full-stack web (Node.js / Next.js)" data-ar="فول ستاك ويب (Node.js / Next.js)">Full-stack web (Node.js / Next.js)</span></div>
-        <div class="fact"><span class="k" data-en="Open to" data-ar="متاح لـ">Open to</span><span class="v" data-en="Remote junior roles, internships, freelance" data-ar="شغل ريموت جونيور، تدريب، فريلانس">Remote junior roles, internships, freelance</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <h2 class="sec" data-en="Selected work" data-ar="أبرز شغلي">Selected work</h2>
+    <p class="sec-sub" data-en="Real products, designed, built and shipped by me" data-ar="منتجات حقيقية صممتها وبنيتها ونشرتها بنفسي">Real products, designed, built and shipped by me</p>
 
-<section id="skills" style="padding-top:0">
-  <div class="wrap">
-    <h2 class="sec" data-en="What I work with" data-ar="التقنيات اللى بشتغل بيها">What I work with</h2>
-    <p class="sec-sub" data-en="Tools I use in real projects, not just tutorials" data-ar="أدوات بستخدمها في مشاريع حقيقية، مش بس في كورسات">Tools I use in real projects, not just tutorials</p>
-    <div class="skills">
-      <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">NestJS</span>
-      <span class="chip">Next.js / React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
-      <span class="chip">Python</span><span class="chip">PostgreSQL / Prisma</span><span class="chip">MySQL</span>
-      <span class="chip">MongoDB</span><span class="chip">Docker (basics)</span><span class="chip">Cloudflare R2</span>
-      <span class="chip">Vercel / Render</span><span class="chip">GitHub Actions</span><span class="chip">REST APIs</span>
-      <span class="chip">Git</span>
-    </div>
-  </div>
-</section>
-
-<section id="projects" style="padding-top:0">
-  <div class="wrap">
-    <h2 class="sec" data-en="Projects" data-ar="مشاريعي">Projects</h2>
-    <p class="sec-sub" data-en="Things I designed, built and shipped" data-ar="حاجات صممتها وبنيتها ونشرتها">Things I designed, built and shipped</p>
-    <div class="proj-grid">
-      <div class="proj featured">
-        <div class="top">
-          <h3>Global Math</h3>
-          <span class="tag" data-en="Live · sold to a client · still maintained by me" data-ar="شغالة · اتباعت لعميل · ولسه بطوّرها">Live · sold to a client · still maintained by me</span>
-        </div>
-        <p data-en="A complete math e-learning platform I built from zero: video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), a support chat, lesson tracking, and a video-transcoding pipeline. Runs on a free-tier architecture (Vercel + Render + Neon Postgres + Cloudflare R2) that I planned and tuned myself." data-ar="منصة تعليم رياضيات كاملة بنيتها من الصفر: كورسات فيديو بواترمارك متحرك لكل طالب، تسجيل دخول بجوجل، ثلاث صلاحيات (طالب، مدرّس، أدمن)، شات دعم، متابعة للدروس، وخط معالجة فيديو. شغالة على بنية مجانية (Vercel + Render + Neon Postgres + Cloudflare R2) خططتها وظبطتها بنفسي.">A complete math e-learning platform I built from zero: video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), a support chat, lesson tracking, and a video-transcoding pipeline. Runs on a free-tier architecture (Vercel + Render + Neon Postgres + Cloudflare R2) that I planned and tuned myself.</p>
+    <div class="case">
+      <div>
+        <h3>Global Math</h3>
+        <div class="role-line" data-en="Sole developer · built from zero · sold to a client · still maintained by me" data-ar="المطوّر الوحيد · بنيتها من الصفر · اتباعت لعميل · ولسه بصيّنها">Sole developer · built from zero · sold to a client · still maintained by me</div>
+        <p data-en="A complete Arabic math e-learning platform, live and serving real students today. Video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), exams with auto-grading, a support chat, lesson tracking and a video-transcoding pipeline." data-ar="منصة تعليم رياضيات عربية كاملة، شغالة وبتخدم طلاب حقيقيين النهارده. كورسات فيديو بواترمارك متحرك لكل طالب، تسجيل دخول بجوجل، ثلاث صلاحيات (طالب، مدرّس، أدمن)، امتحانات بتصحيح تلقائي، شات دعم، متابعة للدروس، وخط معالجة فيديو.">A complete Arabic math e-learning platform, live and serving real students today. Video courses with moving per-student watermarks, Google sign-in, three roles (student, teacher, admin), exams with auto-grading, a support chat, lesson tracking and a video-transcoding pipeline.</p>
+        <h4 data-en="What I did" data-ar="إيه اللي عملته">What I did</h4>
+        <ul>
+          <li data-en="Designed the whole system solo: database schema, REST API, frontend, admin dashboard and deployment" data-ar="صممت النظام كله لوحدي: قاعدة البيانات، الـ API، الواجهة، لوحة الأدمن، والنشر">Designed the whole system solo: database schema, REST API, frontend, admin dashboard and deployment</li>
+          <li data-en="Architected it to run on a $0/month free tier (Vercel + Render + Neon Postgres + Cloudflare R2) without falling over" data-ar="صممتها تشتغل على بنية مجانية بـ ٠ دولار شهريًا (Vercel + Render + Neon Postgres + Cloudflare R2) من غير ما تقع">Architected it to run on a $0/month free tier (Vercel + Render + Neon Postgres + Cloudflare R2) without falling over</li>
+          <li data-en="Built anti-piracy video protection: per-student moving watermarks and signed playback" data-ar="بنيت حماية للفيديو ضد القرصنة: واترمارك متحرك لكل طالب وتشغيل موقّع">Built anti-piracy video protection: per-student moving watermarks and signed playback</li>
+          <li data-en="Keep developing it for the client: new features, payments integration and an AI support agent" data-ar="لسه بطوّرها للعميل: مميزات جديدة، تكامل مدفوعات، ووكيل دعم بالذكاء الاصطناعي">Keep developing it for the client: new features, payments integration and an AI support agent</li>
+        </ul>
         <div class="stack"><span>Next.js</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Cloudflare R2</span><span>GitHub Actions</span></div>
-        <a class="plink" href="https://www.globalmathematics.online/" target="_blank" rel="noopener" data-en="Visit globalmathematics.online →" data-ar="زوروا globalmathematics.online ←">Visit globalmathematics.online →</a>
+        <p style="margin-top:16px"><a class="plink" href="https://www.globalmathematics.online/" target="_blank" rel="noopener" data-en="Visit the live platform →" data-ar="زوروا المنصة الشغالة ←">Visit the live platform →</a></p>
       </div>
+      <a href="https://www.globalmathematics.online/" target="_blank" rel="noopener"><img class="shot" src="shots/globalmath-landing.png" alt="Global Math homepage" loading="lazy"></a>
+    </div>
+
+    <div class="proj-grid">
       <div class="proj">
         <div class="top"><h3 data-en="Image Processing API" data-ar="API معالجة الصور">Image Processing API</h3></div>
         <p data-en="A REST API that resizes and processes images on the fly, built with Express, TypeScript and Sharp, with tests and clean architecture." data-ar="واجهة REST بتظبط وتعالج الصور لحظيًا، مبنية بـ Express وTypeScript وSharp، مع اختبارات وبنية كود نضيفة.">A REST API that resizes and processes images on the fly, built with Express, TypeScript and Sharp, with tests and clean architecture.</p>
@@ -195,16 +252,139 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     </div>
   </div>
 </section>
+<section id="extensions" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="Arabic web tools, coming soon" data-ar="أدوات ويب عربية، قريبًا">Arabic web tools, coming soon</h2>
+    <p class="sec-sub" data-en="Five Chrome extensions (Manifest V3, vanilla JS) for Arabic speakers. In private beta with 32 passing automated tests, publishing soon. AI features run on the user's own free key." data-ar="خمس إضافات كروم (Manifest V3، جافا سكريبت خالص) للمستخدمين العرب. في نسخة تجريبية خاصة بـ ٣٢ اختبار آلي ناجح، وهتتنشر قريب. مميزات الذكاء الاصطناعي بتشتغل بمفتاح المستخدم المجاني.">Five Chrome extensions (Manifest V3, vanilla JS) for Arabic speakers. In private beta with 32 passing automated tests, publishing soon. AI features run on the user's own free key.</p>
+    <div class="ext-grid">
+      <div class="ext"><div class="ico">📚</div><div><h3>Dirassa · دراسة <span class="tag soon" data-en="coming soon" data-ar="قريبًا">coming soon</span></h3><p data-en="Select any text on any page and get an Arabic study summary, flashcards and quiz questions. Works offline instantly, or deeper with a free AI key." data-ar="حدّد أي نص في أي صفحة واحصل على ملخص للمذاكرة وبطاقات مراجعة وأسئلة بالعربية. يشتغل فورًا بدون مفتاح، أو أعمق بمفتاح مجاني.">Select any text on any page and get an Arabic study summary, flashcards and quiz questions. Works offline instantly, or deeper with a free AI key.</p></div></div>
+      <div class="ext"><div class="ico">✍️</div><div><h3>Sahih · صحيح <span class="tag soon" data-en="coming soon" data-ar="قريبًا">coming soon</span></h3><p data-en="Arabic spelling and grammar checking for any text you write or select, with an explanation of every fix and one-click replace." data-ar="تدقيق إملائي ونحوي عربي لأي نص بتكتبه أو بتحدده، مع شرح كل تصحيح وزر استبدال بضغطة واحدة.">Arabic spelling and grammar checking for any text you write or select, with an explanation of every fix and one-click replace.</p></div></div>
+      <div class="ext"><div class="ico">🎬</div><div><h3>Mulakhas · ملخص <span class="tag soon" data-en="coming soon" data-ar="قريبًا">coming soon</span></h3><p data-en="Arabic summaries of YouTube videos with clickable timestamps. Browse the full transcript free; AI chapters with your own key." data-ar="ملخصات عربية لفيديوهات يوتيوب مع روابط زمنية بتنقلك للحظة الشرح. تصفّح الترجمة الكاملة مجانًا، وفصول بالذكاء الاصطناعي بمفتاحك.">Arabic summaries of YouTube videos with clickable timestamps. Browse the full transcript free; AI chapters with your own key.</p></div></div>
+      <div class="ext"><div class="ico">🔊</div><div><h3>Qari · قارئ <span class="tag soon" data-en="coming soon" data-ar="قريبًا">coming soon</span></h3><p data-en="An accessibility reader for Arabic users: reads any page aloud in clear Arabic, enlarges text, and can rewrite it in simpler Arabic." data-ar="قارئ لسهولة الوصول للمستخدمين العرب: يقرأ أي صفحة بصوت عربي واضح، يكبّر الخط، ويقدر يبسّط النص بضغطة واحدة.">An accessibility reader for Arabic users: reads any page aloud in clear Arabic, enlarges text, and can rewrite it in simpler Arabic.</p></div></div>
+      <div class="ext"><div class="ico">🕌</div><div><h3>Sakina · سكينة <span class="tag soon" data-en="coming soon" data-ar="قريبًا">coming soon</span></h3><p data-en="Blocks distracting sites during prayer times (auto-calculated daily for your city) and study sessions. No skip button." data-ar="يحجب المواقع المشتتة في أوقات الصلاة (بتحسب تلقائيًا كل يوم حسب مدينتك) وجلسات المذاكرة. من غير زر تخطي.">Blocks distracting sites during prayer times (auto-calculated daily for your city) and study sessions. No skip button.</p></div></div>
+    </div>
+  </div>
+</section>
 
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="Services" data-ar="الخدمات">Services</h2>
+    <p class="sec-sub" data-en="What I can build for you" data-ar="إيه اللي أقدر أبنيه لك">What I can build for you</p>
+    <div class="svc-grid">
+      <div class="svc">
+        <h3 data-en="Full-stack web app" data-ar="تطبيق ويب كامل">Full-stack web app</h3>
+        <p data-en="A complete product from database to deployment: auth, dashboards, payments and admin tools. Like Global Math." data-ar="منتج كامل من قاعدة البيانات للنشر: تسجيل دخول، لوحات تحكم، مدفوعات وأدوات إدارة. زي Global Math.">A complete product from database to deployment: auth, dashboards, payments and admin tools. Like Global Math.</p>
+        <div class="price"><span data-en="On request" data-ar="حسب الطلب">On request</span><small data-en="per project, scoped together" data-ar="للمشروع، بنتفق على النطاق معًا">per project, scoped together</small></div>
+      </div>
+      <div class="svc">
+        <h3 data-en="Landing page or portfolio" data-ar="صفحة هبوط أو بورتفوليو">Landing page or portfolio</h3>
+        <p data-en="A fast, responsive, bilingual (Arabic/English) site like this one, with dark/light mode and your own domain." data-ar="موقع سريع ومتجاوب وثنائي اللغة (عربي/إنجليزي) زي الموقع ده، مع وضع ليلي/نهاري ودومين خاص بيك.">A fast, responsive, bilingual (Arabic/English) site like this one, with dark/light mode and your own domain.</p>
+        <div class="price"><span data-en="On request" data-ar="حسب الطلب">On request</span><small data-en="per site" data-ar="للموقع">per site</small></div>
+      </div>
+      <div class="svc">
+        <h3 data-en="API &amp; backend" data-ar="API وباك إند">API &amp; backend</h3>
+        <p data-en="REST APIs, databases and integrations: Node.js, Express or NestJS, with tests and clean docs." data-ar="واجهات REST وقواعد بيانات وتكاملات: Node.js وExpress أو NestJS، مع اختبارات وتوثيق واضح.">REST APIs, databases and integrations: Node.js, Express or NestJS, with tests and clean docs.</p>
+        <div class="price"><span data-en="On request" data-ar="حسب الطلب">On request</span><small data-en="per project, scoped together" data-ar="للمشروع، بنتفق على النطاق معًا">per project, scoped together</small></div>
+      </div>
+      <div class="svc">
+        <h3 data-en="Browser extension" data-ar="إضافة متصفح">Browser extension</h3>
+        <p data-en="A Chrome extension (Manifest V3) that solves a real workflow problem, like my five Arabic web tools." data-ar="إضافة كروم (Manifest V3) بتحل مشكلة حقيقية في شغلك، زي أدوات الويب العربية الخمسة بتاعتي.">A Chrome extension (Manifest V3) that solves a real workflow problem, like my five Arabic web tools.</p>
+        <div class="price"><span data-en="On request" data-ar="حسب الطلب">On request</span><small data-en="per extension" data-ar="للإضافة">per extension</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="How a project runs with me" data-ar="مشروعك بيمشي إزاي معايا">How a project runs with me</h2>
+    <p class="sec-sub" data-en="The same way Global Math was built and delivered" data-ar="نفس الطريقة اللي اتبنت واتسلمت بيها Global Math">The same way Global Math was built and delivered</p>
+    <div class="steps">
+      <div class="step"><b>1</b><h3 data-en="Scope" data-ar="النطاق">Scope</h3><p data-en="We agree on exactly what gets built, what it costs and when it lands. No surprises." data-ar="بنتفق بالظبط على إيه اللي هيتبني، وتكلفته، وميعاد تسليمه. من غير مفاجآت.">We agree on exactly what gets built, what it costs and when it lands. No surprises.</p></div>
+      <div class="step"><b>2</b><h3 data-en="Build" data-ar="البناء">Build</h3><p data-en="I build in small working pieces you can see and try, not one big reveal at the end." data-ar="ببني على أجزاء شغالة صغيرة تشوفها وتجربها، مش مفاجأة واحدة في الآخر.">I build in small working pieces you can see and try, not one big reveal at the end.</p></div>
+      <div class="step"><b>3</b><h3 data-en="Test" data-ar="الاختبار">Test</h3><p data-en="Automated tests plus real-device checks before anything ships to you." data-ar="اختبارات آلية وتجربة على أجهزة حقيقية قبل ما أي حاجة توصلك.">Automated tests plus real-device checks before anything ships to you.</p></div>
+      <div class="step"><b>4</b><h3 data-en="Support" data-ar="الدعم">Support</h3><p data-en="After delivery I stay reachable. Global Math has been maintained and growing for months after the sale." data-ar="بعد التسليم أفضل متاح. Global Math لسه بتتصان وبتكبر من شهور بعد البيع.">After delivery I stay reachable. Global Math has been maintained and growing for months after the sale.</p></div>
+    </div>
+  </div>
+</section>
+<section id="notes" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="Engineering notes" data-ar="ملاحظات هندسية">Engineering notes</h2>
+    <p class="sec-sub" data-en="Short write-ups from real problems I solved" data-ar="كتابات قصيرة عن مشاكل حقيقية حليتها">Short write-ups from real problems I solved</p>
+    <div class="notes-grid">
+      <details class="note">
+        <summary><span data-en="Running Global Math on $0 a month" data-ar="تشغيل Global Math بصفر دولار شهريًا">Running Global Math on $0 a month</span><span class="meta" data-en="architecture" data-ar="البنية">architecture</span></summary>
+        <div class="body">
+          <p data-en="A sold, live product with paying stakeholders still costs the client nothing to host. The frontend sits on Vercel's free tier, the NestJS API on Render's free tier, the database on Neon's free Postgres, and videos on Cloudflare R2, which has no egress fees." data-ar="منتج متباع وشغال وعنده مستفيدين بيدفعوا، ولسه بيكلّف العميل صفر في الاستضافة. الواجهة على الخطة المجانية لـ Vercel، وواجهة الـ NestJS على Render، وقاعدة البيانات على Postgres المجاني من Neon، والفيديوهات على Cloudflare R2 اللي مفيهاش رسوم نقل بيانات.">A sold, live product with paying stakeholders still costs the client nothing to host. The frontend sits on Vercel's free tier, the NestJS API on Render's free tier, the database on Neon's free Postgres, and videos on Cloudflare R2, which has no egress fees.</p>
+          <p data-en="The real work is in the constraints: free tiers sleep, so health checks and an uptime monitor keep the API warm, and heavy jobs like video transcoding run as queued background workers instead of blocking requests." data-ar="الشغل الحقيقي في القيود: الخطط المجانية بتنام، فبستخدم فحوصات صحة ومراقبة uptime علشان الـ API يفضل صاحي، والمهام التقيلة زي معالجة الفيديو بتشتغل كعمال خلفية بطوابير بدل ما تحجب الطلبات.">The real work is in the constraints: free tiers sleep, so health checks and an uptime monitor keep the API warm, and heavy jobs like video transcoding run as queued background workers instead of blocking requests.</p>
+        </div>
+      </details>
+      <details class="note">
+        <summary><span data-en="Beating YouTube's transcript wall" data-ar="تخطّي حائط ترجمة يوتيوب">Beating YouTube's transcript wall</span><span class="meta" data-en="browser extensions" data-ar="إضافات المتصفح">browser extensions</span></summary>
+        <div class="body">
+          <p data-en="While building Mulakhas, YouTube's transcript URLs started returning empty responses gated by bot detection tokens. The fix was a three-step fallback chain: read the player data already inside the page, then re-fetch the watch page, then ask YouTube's mobile client endpoint, which still serves classic transcript XML." data-ar="وأنا ببني Mulakhas، روابط الترجمة في يوتيوب بدأت ترجع ردود فاضية محمية برموز كشف البوتات. الحل كان سلسلة احتياطية من ثلاث خطوات: قراءة بيانات المشغل الموجودة أصلاً جوه الصفحة، وبعدين إعادة جلب صفحة المشاهدة، وبعدين سؤال نقطة عميل الموبايل في يوتيوب اللي لسه بترجع XML الترجمة الكلاسيكي.">While building Mulakhas, YouTube's transcript URLs started returning empty responses gated by bot detection tokens. The fix was a three-step fallback chain: read the player data already inside the page, then re-fetch the watch page, then ask YouTube's mobile client endpoint, which still serves classic transcript XML.</p>
+          <p data-en="Validated against a real 10-hour Arabic course: 11,359 transcript segments parsed, grouped and formatted for the AI prompt." data-ar="اتجربت على كورس عربي حقيقي مدته ١٠ ساعات: ١١,٣٥٩ مقطع ترجمة اتقرأوا واتجمّعوا واتجهزوا لبرومبت الذكاء الاصطناعي.">Validated against a real 10-hour Arabic course: 11,359 transcript segments parsed, grouped and formatted for the AI prompt.</p>
+        </div>
+      </details>
+      <details class="note">
+        <summary><span data-en="One shared core, five extensions" data-ar="نواة واحدة مشتركة، خمس إضافات">One shared core, five extensions</span><span class="meta" data-en="browser extensions" data-ar="إضافات المتصفح">browser extensions</span></summary>
+        <div class="body">
+          <p data-en="All five Arabic web tools share one vendor layer: AI calls, Arabic text processing and offline summarization. Each extension is then a thin Manifest V3 shell with only its own UI and logic, which is how all five stayed small and testable." data-ar="أدوات الويب العربية الخمسة كلها بتشارك طبقة vendor واحدة: مكالمات الذكاء الاصطناعي، ومعالجة النص العربي، والتلخيص الأوفلاين. كل إضافة بعد كده عبارة عن غلاف Manifest V3 رفيع فيه بس الواجهة والمنطق بتوعها، وده اللي خلّى الخمسة يفضلوا صغيرين وقابلين للاختبار.">All five Arabic web tools share one vendor layer: AI calls, Arabic text processing and offline summarization. Each extension is then a thin Manifest V3 shell with only its own UI and logic, which is how all five stayed small and testable.</p>
+          <p data-en="32 automated tests cover the shared core and each extension's logic, and every AI flow was verified live in a real browser before calling it done." data-ar="٣٢ اختبار آلي بيغطوا النواة المشتركة ومنطق كل إضافة، وكل تدفق ذكاء اصطناعي اتجرب لايف في متصفح حقيقي قبل ما أعتبره خلاص.">32 automated tests cover the shared core and each extension's logic, and every AI flow was verified live in a real browser before calling it done.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec" data-en="About me" data-ar="عنّي">About me</h2>
+    <p class="sec-sub" data-en="The short version" data-ar="باختصار">The short version</p>
+    <div class="about-grid">
+      <div class="card about">
+        <p data-en="I didn't learn programming in a classroom. I learned it by building things people actually use, and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself." data-ar="أنا متعلمتش البرمجة في فصل. اتعلمتها ببناء حاجات ناس بتستخدمها فعلًا، و<b>Global Math</b> هو الدليل: منصة تعليمية كاملة فيها كورسات فيديو، وواترمارك لكل طالب، وتسجيل دخول بجوجل، وثلاث صلاحيات للمستخدمين، شغالة لايف على بنية مجانية صممتها بنفسي.">I didn't learn programming in a classroom. I learned it by building things people actually use, and <b>Global Math</b> is the proof: a full learning platform with video courses, per-student watermarks, Google sign-in, and three user roles, running live on a free-tier architecture I designed myself.</p>
+        <p data-en="I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem." data-ar="بتعامل مع كل المراحل: تصميم قاعدة البيانات، كتابة الـ API، بناء الواجهة، والنشر. بيهمني الشغل الصادق، والكود النضيف، ومنتجات بتحل مشكلة حقيقية.">I handle the whole stack: designing the database, writing the API, building the frontend, and deploying it. I care about honest work, clean code, and products that solve a real problem.</p>
+        <p data-en="Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work, and I take freelance projects." data-ar="دلوقتي بدور على <b>شغل ريموت جونيور أو تدريب</b> أقدر فيه أكمّل اتعلّم وأسلّم شغل حقيقي، وباخد مشاريع فريلانس.">Right now I'm looking for a <b>remote junior role or internship</b> where I can keep learning and ship real work, and I take freelance projects.</p>
+      </div>
+      <div class="card facts">
+        <div class="fact"><span class="k" data-en="Location" data-ar="المكان">Location</span><span class="v" data-en="Tanta, Egypt" data-ar="طنطا، مصر">Tanta, Egypt</span></div>
+        <div class="fact"><span class="k" data-en="Experience" data-ar="الخبرة">Experience</span><span class="v" data-en="~5 years self-taught, shipping real projects" data-ar="حوالي 5 سنين تعلّم ذاتي وبناء مشاريع حقيقية">~5 years self-taught, shipping real projects</span></div>
+        <div class="fact"><span class="k" data-en="Focus" data-ar="التركيز">Focus</span><span class="v" data-en="Full-stack web (Node.js / Next.js)" data-ar="فول ستاك ويب (Node.js / Next.js)">Full-stack web (Node.js / Next.js)</span></div>
+        <div class="fact"><span class="k" data-en="Open to" data-ar="متاح لـ">Open to</span><span class="v" data-en="Remote junior roles, internships, freelance" data-ar="شغل ريموت جونيور، تدريب، فريلانس">Remote junior roles, internships, freelance</span></div>
+      </div>
+    </div>
+    <div style="margin-top:26px">
+      <h3 style="font-size:1.05rem;margin-bottom:12px" data-en="What I work with" data-ar="التقنيات اللى بشتغل بيها">What I work with</h3>
+      <div class="chips">
+        <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">NestJS</span>
+        <span class="chip">Next.js / React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+        <span class="chip">Python</span><span class="chip">PostgreSQL / Prisma</span><span class="chip">MySQL</span>
+        <span class="chip">MongoDB</span><span class="chip">Docker (basics)</span><span class="chip">Cloudflare R2</span>
+        <span class="chip">Vercel / Render</span><span class="chip">GitHub Actions</span><span class="chip">REST APIs</span>
+        <span class="chip">Chrome Extensions (MV3)</span><span class="chip">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="contact" style="padding-top:0">
   <div class="wrap contact">
     <h2 class="sec" data-en="Let's talk" data-ar="خلينا نتكلم">Let's talk</h2>
     <p class="sec-sub" data-en="Remote junior roles, internships, or a project you need built" data-ar="شغل ريموت جونيور، تدريب، أو مشروع محتاج حد يبنيه">Remote junior roles, internships, or a project you need built</p>
-    <div class="cards">
-      <a class="c" href="mailto:3bdullahelsherif@gmail.com"><span class="ico">✉️</span><span>3bdullahelsherif@gmail.com</span></a>
-      <a class="c" href="https://github.com/3bdullahelsherif" target="_blank" rel="noopener"><span class="ico">🐙</span><span>github.com/3bdullahelsherif</span></a>
-      <a class="c" href="https://www.linkedin.com/in/3bdullahelsherif" target="_blank" rel="noopener"><span class="ico">💼</span><span>LinkedIn</span></a>
-      <a class="c" href="https://x.com/3bdullahaly" target="_blank" rel="noopener"><span class="ico">𝕏</span><span>@3bdullahaly</span></a>
+    <div class="contact-grid">
+      <form class="cform card" id="cform">
+        <input id="cf-name" type="text" required data-en-placeholder="Your name" data-ar-placeholder="اسمك" placeholder="Your name">
+        <input id="cf-email" type="email" required data-en-placeholder="Your email" data-ar-placeholder="إيميلك" placeholder="Your email">
+        <textarea id="cf-msg" required data-en-placeholder="What do you need built? Or what role are you hiring for?" data-ar-placeholder="محتاج تبني إيه؟ أو بتدوّر على حد لدور إيه؟" placeholder="What do you need built? Or what role are you hiring for?"></textarea>
+        <button class="btn primary" type="submit" data-en="Send via email" data-ar="ابعت بالإيميل">Send via email</button>
+        <p style="font-size:.78rem;color:var(--dim);margin:0" data-en="Opens your email app with the message ready. Nothing is stored on this site." data-ar="بيفتح تطبيق الإيميل عندك والرسالة جاهزة. مفيش أي حاجة بتتخزن على الموقع.">Opens your email app with the message ready. Nothing is stored on this site.</p>
+      </form>
+      <div class="cards">
+        <a class="c" href="mailto:3bdullahelsherif@gmail.com"><span class="ico">✉️</span><span>3bdullahelsherif@gmail.com</span></a>
+        <a class="c" href="https://github.com/3bdullahelsherif" target="_blank" rel="noopener"><span class="ico">🐙</span><span>github.com/3bdullahelsherif</span></a>
+        <a class="c" href="https://www.linkedin.com/in/3bdullahelsherif" target="_blank" rel="noopener"><span class="ico">💼</span><span>LinkedIn</span></a>
+        <a class="c" href="https://x.com/3bdullahaly" target="_blank" rel="noopener"><span class="ico">𝕏</span><span>@3bdullahaly</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -215,11 +395,24 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 
 <script>
 var lang = localStorage.getItem('lang') || 'en';
+var theme = localStorage.getItem('theme') || 'dark';
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeBtn').textContent = (theme === 'dark') ? '☀' : '☾';
+}
+function toggleTheme(){
+  theme = (theme === 'dark') ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  applyTheme();
+}
 function applyLang(){
   document.documentElement.lang = lang;
   document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-en]').forEach(function(el){
     el.innerHTML = el.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('[data-en-placeholder]').forEach(function(el){
+    el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
   });
   document.getElementById('langBtn').textContent = (lang === 'ar') ? 'EN' : 'عربي';
   document.title = (lang === 'ar')
@@ -231,6 +424,17 @@ function toggleLang(){
   localStorage.setItem('lang', lang);
   applyLang();
 }
+document.getElementById('cform').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('cf-name').value.trim();
+  var email = document.getElementById('cf-email').value.trim();
+  var msg = document.getElementById('cf-msg').value.trim();
+  var subject = (lang === 'ar' ? 'رسالة من البورتفوليو — ' : 'Portfolio message from ') + name;
+  var body = msg + '\n\n— ' + name + ' (' + email + ')';
+  window.location.href = 'mailto:3bdullahelsherif@gmail.com?subject='
+    + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+applyTheme();
 applyLang();
 </script>
 </body>
